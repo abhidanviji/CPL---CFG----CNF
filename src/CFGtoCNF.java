@@ -1,11 +1,11 @@
+/* CS 635 Programming Project - Abhinaya Dhandapani */
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class CFGtoCNF {
 	public static ArrayList<String> l = new ArrayList<>();
-	public static Map<String, String> map = new LinkedHashMap<>();
+	public static HashMap<String, String> map = new HashMap<>();
 
 	public static boolean chkCase(String alph) {
 		return alph.equals(alph.toLowerCase());
@@ -34,7 +34,6 @@ public class CFGtoCNF {
 
 			}
 			return rhs;
-
 		} else {
 			if (chkCase(split)) {
 				return split;
@@ -60,13 +59,10 @@ public class CFGtoCNF {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Rule");
-		String cfg = sc.nextLine();//"A -> aBcdE";		
+		System.out.print("Enter Rule: ");
+		String cfg = sc.nextLine();// "A -> aBcdE"
 		String split[] = cfg.split(" ");
-		l.add(split[0].trim());
-		for (int i = 0; i < split.length; i++) {
-			split[i] = split[i].trim();
-		}
+		l.add(split[0]);
 		map.put(split[0], cnf(split[2]));
 		for (int i = 0; i < l.size(); i++) {
 			System.out.println(l.get(i) + " -> " + map.get(l.get(i)));

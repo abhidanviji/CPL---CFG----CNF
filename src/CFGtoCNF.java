@@ -45,6 +45,8 @@ public class CFGtoCNF {
 					rhs=rhs+"<"+split.substring(0,1)+">";
 					l.add("<"+split.substring(0,1)+">");
 					map.put("<"+split.substring(0,1)+">", cnf(split.substring(0,1)));
+				}else{
+					rhs=rhs+split.substring(0,1);
 				}
 				if(chkCase(split.substring(1))){
 					rhs=rhs+"<"+split.substring(1)+">";
@@ -59,7 +61,7 @@ public class CFGtoCNF {
 	}
 
 	public static void main(String[] args) {
-		String cfg = "A -> ABceDfS";
+		String cfg = "A -> ABceDFS";
 		
 		String split[] = cfg.split("->");
 		l.add(split[0]);

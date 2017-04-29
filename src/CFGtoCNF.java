@@ -26,11 +26,12 @@ public class CFGtoCNF {
 				rhs=rhs+"<"+split.substring(1)+">";
 				l.add("<"+split.substring(1)+">");
 				map.put("<"+split.substring(1)+">", cnf(split.substring(1)));
-
 			}else{
+				
 				split=split.substring(1).substring(0);
 				System.out.println("Split "+split);
 				l.add("<"+split+">");
+				rhs=rhs+"<"+split+">";
 				map.put("<"+split+">", cnf(split));
 				
 			}

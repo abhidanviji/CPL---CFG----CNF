@@ -29,7 +29,6 @@ public class CFGtoCNF {
 			}else{
 				
 				split=split.substring(1).substring(0);
-				System.out.println("Split "+split);
 				l.add("<"+split+">");
 				rhs=rhs+"<"+split+">";
 				map.put("<"+split+">", cnf(split));
@@ -40,7 +39,7 @@ public class CFGtoCNF {
 			
 		}else{
 			if(chkCase(split)){
-			r.add(split);
+				return split;
 			}else{
 				if(chkCase(split.substring(0,1))){
 					rhs=rhs+"<"+split.substring(0,1)+">";
@@ -60,20 +59,19 @@ public class CFGtoCNF {
 	}
 
 	public static void main(String[] args) {
-		String cfg = "A -> aBcdE";
+		String cfg = "A -> ABceDfS";
 		
 		String split[] = cfg.split("->");
 		l.add(split[0]);
 		for(int i=0;i<split.length;i++){
 			split[i]=split[i].trim();
-			System.out.println(split[i]);
 		}
-		cnf(split[1]);
+		map.put(split[0], cnf(split[1]));
 		
-		System.out.println("LHS - "+l);
-		System.out.println("RHS - "+r);
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+		
+		System.out.println(split[0]+"->"+map.get(split[0]));
+		for(int i=1;i<l.size();i++){
+			System.out.println(l.get(i)+"->"+map.get(l.get(i)));
 		}
 
 	}

@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class CFGtoCNF {
 	public static ArrayList<String> l = new ArrayList<>();
-	public static ArrayList<String> r = new ArrayList<>();
 	public static Map<String, String> map = new LinkedHashMap<>();
 	
 	public static boolean chkCase(String alph){
@@ -34,7 +33,6 @@ public class CFGtoCNF {
 				map.put("<"+split+">", cnf(split));
 				
 			}
-			r.add(rhs);
 			return rhs;
 			
 		}else{

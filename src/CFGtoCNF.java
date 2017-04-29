@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class CFGtoCNF {
 	public static ArrayList<String> l = new ArrayList<>();
@@ -58,13 +59,15 @@ public class CFGtoCNF {
 	}
 
 	public static void main(String[] args) {
-		String cfg = "A -> aBcdE";
-		String split[] = cfg.split("->");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Rule");
+		String cfg = sc.nextLine();//"A -> aBcdE";		
+		String split[] = cfg.split(" ");
 		l.add(split[0].trim());
 		for (int i = 0; i < split.length; i++) {
 			split[i] = split[i].trim();
 		}
-		map.put(split[0], cnf(split[1]));
+		map.put(split[0], cnf(split[2]));
 		for (int i = 0; i < l.size(); i++) {
 			System.out.println(l.get(i) + " -> " + map.get(l.get(i)));
 		}
